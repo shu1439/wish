@@ -1,3 +1,15 @@
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.clearfix {
+  zoom: 1;
+}
+.hide {
+  display: none;
+}
+
 .header {
   background-color:#fff;
   position: fixed;
@@ -111,7 +123,7 @@
   display: inline-block;
   height: 50px;
   width: 100px;
-  background: url('../img/62072939@2D557D06.D541125B.png') no-repeat;
+  background: url('../img/webwxgetmsgimg.png') no-repeat;
   background-size: 100px;
   right: 5px;
   bottom: 130px;
@@ -136,4 +148,43 @@
   border-radius: 4px;
   color: #333;
   font-size: 12px;
+}
+
+.in-edit {
+  /* border: 1px solid #ccc; */
+  padding: 5px 15px;
+  height: 25px;
+  width: 210px;
+  line-height: 30px;
+  border-radius: 3px;
+  text-indent: 30px;
+  background-color: rgba(255, 255, 255, .6);
+  box-shadow: 0 0 5px #333;
+  background: url('../img/搜索.png') 5px  no-repeat;
+  background-color: rgba(255, 255, 255, .6);
+  background-size: 30px; 
+}
+.in-edit:focus {
+  outline:none;
+}
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  /* text-align: center;
+  margin: 0 auto; */
+}
+.search .btn {
+  width: 80px;
+  height: 35px;
+  background-color: #db4c3f;
+  opacity: 0.9;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 0 5px #333;
 }
