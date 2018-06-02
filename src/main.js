@@ -1,31 +1,18 @@
-// let index = 0;
-// let len = 6;
+
 !function init() {
   opData()
   count(data)
   search()
 }()
 
-// setInterval(function () {
-//   opData()
-// }, 2000);
 function opData() {
   let ul = document.getElementsByClassName('content-list');
-  // let ul = document.getElementsByClassName('content-list');
-  // if (index > data.length) {
-  //   index = 0;
-  //   len = 6
-  // }
-  // let arr = data.slice(index, len)
-  // index = index + 6;
-  // len = len + 6;
-  // ul[0].innerHTML = '';
   data.forEach((ele, index)=> {
     createList(ele, index, ul[0]);
   })
 }
 function count(arr) {
-  let span = document.getElementsByClassName('count')[0].children[0];
+  let span = document.getElementsByClassName('count')[0].children[1];
   let len = arr.length;
   span.innerHTML = `共 ${len} 条心愿`;
 }
@@ -45,22 +32,15 @@ function createList(ele, index, dom) {
   
 }
 
-
-setTimeout(change,3000); 
-	function upscroll(){
-		var content = $(".commentBox-content");
-    var offset = ($(".commentBox-content").find("li").eq(0).height()+35)*-1 + "px";
-		content.stop().animate({top:offset},2000,function(){
-			var first = $("li").first();
-			$(".commentBox-content").append(first);
-			$(".commentBox-content").css("top","0px");
-		});
-		
-		setTimeout(change,3000);
-	}
-
-function change() {
-  upscroll();
+setInterval(upscroll, 3000);
+function upscroll(){
+  var content = $(".commentBox-content");
+  var offset = ($(".commentBox-content").find("li").eq(0).height()+35)*-1 + "px";
+  content.stop().animate({top:offset},2000,function(){
+    var first = $("li").first();
+    $(".commentBox-content").append(first);
+    $(".commentBox-content").css("top","0px");
+  });
 }
 
 function search() {
@@ -80,7 +60,16 @@ function search() {
     result.forEach((ele, index) => {
       createList(ele, index, list[1]);
     })
-    
+    back();
     search.value = '';
+  }, false);
+}
+function back() {
+  let list = document.getElementsByClassName('content-list');
+  let back = document.getElementsByClassName('callback')[0];
+  back.style.display = '';
+  back.addEventListener('click', function () {
+    list[0].style.display = '';
+    list[1].style.display = '';
   }, false);
 }
