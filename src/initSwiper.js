@@ -5,6 +5,7 @@ var mySwiper = new Swiper ('.swiper-container', {
   pagination: {
     el: '.swiper-pagination',
   },
+  preventClicks : false,
   
   // 如果需要前进后退按钮
   // navigation: {
