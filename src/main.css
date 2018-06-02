@@ -92,8 +92,8 @@
 
 .content-list li {
   padding: 10px 15px;
-  background-color: #ffcccc;
-  color: #333;
+  /* background-color: #ffcccc; */
+  color: #fff;
   margin: 15px 15px;
   border-radius: 5px;
   line-height: 20px;

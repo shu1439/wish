@@ -1,9 +1,26 @@
+let num = 0;
 
 !function init() {
+  laydate.render({
+    elem: '#test1'
+  });
   opData()
   count(data)
   search()
 }()
+function shuffle(arr) {
+  arr.forEach((element, index) => {
+    if (index !== 0) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+  
+      swap(arr, index, randomIndex);
+    }
+  });
+  return arr;
+}
+function swap(arr, indexA, indexB) {
+  [arr[indexA], arr[indexB]] = [arr[indexB], arr[indexA]];
+}
 
 function opData() {
   let ul = document.getElementsByClassName('content-list');
@@ -19,18 +36,20 @@ function count(arr) {
 
 function createList(ele, index, dom) {
   
-  
+  let color = ['#f31055', '#3f3f3f', '#e9585f', '#eebbbb', '#54d669'];
   let li = document.createElement('li');
-  li.innerHTML = ele;
- 
-  if (index % 2) {
-    li.style.backgroundColor = '#f31055';
-    li.style.color = '#fff';
+  li.innerHTML = ele.wish;
+  let arr = shuffle(color);
+  if (num > 4) {
+    num = 0;
   }
+  li.style.backgroundColor = color[num];
+  num++;  
   
   dom.appendChild(li);
   
 }
+
 
 setInterval(upscroll, 3000);
 function upscroll(){
@@ -55,7 +74,9 @@ function search() {
     list[0].style.display = 'none';
     list[1].style.display = 'block';
     let word = search.value;
-    let result = data.filter( ele => ele.indexOf(word) !== -1);
+    console.log(word)
+    let result = data.filter( ele => (ele.wish.indexOf(word) !== -1 || ele.date === word ));
+    // console.log(result);
     count(result);
     result.forEach((ele, index) => {
       createList(ele, index, list[1]);
@@ -68,8 +89,15 @@ function back() {
   let list = document.getElementsByClassName('content-list');
   let back = document.getElementsByClassName('callback')[0];
   back.style.display = '';
+  
   back.addEventListener('click', function () {
     list[0].style.display = '';
     list[1].style.display = '';
+    back.style.display = 'none';
+    count(data)
   }, false);
+}
+function bgColor() {
+  let list = document.getElementsByClassName('content-list');
+  
 }
